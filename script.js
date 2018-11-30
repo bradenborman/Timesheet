@@ -1,6 +1,6 @@
 var Row_values = {
 	Name:'<td><input class="NAME_TXT" type="text" /></td>', 
-	PhoneNumber: '<td><input class="PHONE_TXT" onblur="validPhoneNumber(this)" type="text" /></td>',
+	PhoneNumber: '<td><input placeholder="With Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" type="text" /></td>',
 	Address: '<td><input class="ADDRESS_TXT" type="text" /></td>',
 	JobDescription: '<td><input style="display: none;" type="text" /><select class="size" required><option disabled selected value></option></select></td>', 
 	TimeIn: '<td><input class="TIME_IN_TXT" type="time" /></td>',
