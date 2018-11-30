@@ -1,0 +1,131 @@
+ body {
+		background-image: url("https://images6.alphacoders.com/362/362673.jpg");
+		background-size: cover; 
+	 }
+ 
+#HELP {
+	background-color: black;
+	color: white;
+	transition: all .7s;
+	position: absolute;
+	top: 800px;
+	left: -300px;
+	min-height: 250px;
+	width: 50px;
+	z-index: 99;
+	border: 3px solid black;
+	border-radius: 12px;
+	
+}
+ 
+ .HELP_HEADER {
+	 cursor: pointer;
+	 float: right;
+	 margin-right: 20px;
+ }
+  
+.para {
+	margin: 20px;
+}
+ 
+ #HELP p {
+	 font-size: 1.5em;
+ }
+ 
+#APP {
+	margin-top: 200px;
+	opacity: .98;
+}
+
+.orderFORM {
+	position: relative;
+}
+ 
+ .header {
+	 position: absolute;
+	 top: -40px;
+	 left: 10px;
+ }
+ 
+ .well {
+	 border: 1px solid black;
+	 padding-bottom: 120px;
+ }
+ 
+ #newRowbtn {
+	margin-bottom: 30px; 
+	margin-top: 0px;
+ }
+ input, select{
+	border:0px solid #000;
+	margin:0; 
+	background:transparent;
+	width:100%;
+	cursor: pointer;
+ }
+ input:focus {
+	background-color: #e6ffe6;
+ }
+ table tr td {
+	border-right:1px solid #000; 
+	border:1px solid #000;
+ }
+ table tr th {
+	border-right:1px solid #000; 
+	border-bottom:1px solid #000;
+	border-top:1px solid #000;
+	padding-left: 4px;
+	
+ }
+ table tr th input {
+	height: 45px;
+	padding-left: 5px;
+ }
+  table tr td input {
+	padding-left: 5px;
+ }
+ table {
+	background: #fff none repeat scroll 0 0;
+	border-left: 1px solid #000;
+	border-top: 1px solid #000;
+	font-size: 1.3em;
+ }
+ table tr:nth-child(even){
+ b	ackground:#ccc;
+ }
+ table tr:nth-child(odd){
+	background:#eee;
+ }
+ .orderFORM {
+	margin-top: 50px;
+ }
+ 
+ .glyphicon {
+	font-size: 22px;
+	margin-right: 10px;
+ }
+ 
+  .glyphicon:hover {
+	color: green;
+ }
+ 
+ 
+ .page-header {
+	 font-family: 'Cormorant Unicase';
+	 font-weight: bold;
+	 font-size: 22px;
+	 background-color:  #00b3b3;
+ }
+ 
+p {
+	font-family: 'ABeeZee';font-size: 14px;
+}
+ 
+ h1 {
+	font-size: 2em;
+	 font-weight: bold;
+ }
+ 
+ h3 {
+ font-weight: bold;
+ }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Time Sheet</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	  <link href='https://fonts.googleapis.com/css?family=Cormorant Unicase' rel='stylesheet'>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	  <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+	  <link href='style.css' rel='stylesheet'>
+   </head>
+   <body onload="newRow()">
+   
+   <div id="HELP">   
+		<div class="row">
+				<div class="col-sm-8 para">
+				<p><b>Select new row to start</b></p><hr>
+				<p>*Please enter Name, Phone with Areacode, and Address</p>
+				<p>*User Arrow keys to drop down and select assigned job</p>
+				<p>*User Arrow keys to select HR-MIN-AM/PM</p>
+				</div>
+				<div class="col-sm-3"> 
+					<h2 class="HELP_HEADER" onclick="closeHelp()">Close</h2>
+				</div>
+		</div>
+   
+   </div>
+   
+   
+   <div id="APP">
+      	  <div class="container well">
+		  <p style="visibility: hidden;" id="warning"><b>**Input already has a value. Please do not modify unless its you**</b></p>
+         <div class="orderFORM">
+		 <h3 class="header">Time sheet</h3>
+		
+            <div style="text-align: right;" id="newRowbtn">
+			   <button onclick="newRow()" class="btn btn-primary">New Row</button>
+               <button onclick="showHelp()"  class="btn btn-primary">Show Help</button>
+            </div>
+            <table id="order" cellpadding="0"; cellspacing="0">
+               <tr>
+                  <th style="text-align: right; padding-right: 4px;" width="10%">Date:</th>
+                  <th colspan="6" width="150"><input id="datetxt" readonly  type="text" /></th>
+			
+               </tr>
+               <tr id="HEADERS">
+                  <th width="18%">Name</th>
+				  <th width="12%">Phone Number</th>
+				  <th width="28%">Address</th> 
+				  <th width="13%">Job Description</th>
+                  <th width="8%">Time-In</th>
+                  <th width="8%">Time-Out</th>
+                  <th width="10%">Hrs Worked<br><center>(HH:MM)</center></th>      				       
+               </tr>
+            </table>	
+         </div>
+      </div>
+	 </div>
+   <script src="script.js"></script>
+   </body>
+</html>
