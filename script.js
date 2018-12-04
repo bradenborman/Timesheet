@@ -76,31 +76,51 @@ function validPhoneNumber(_this) {
          }
             
          function newRow() {			
-         	$('#order').append(row);
-         	populateDD()
+				$('#order').append(row);
+				populateDD()
          }
 		 
 		 
+		 var keyed = false
+		 
 		$(document.body).on('dblclick', 'tr' ,function(){
-			var count = $('#order tr').length
+			
+			if(keyed) {
+				var count = $('#order tr').length
+			//CHECK for if row has val
+				
+				if($(this).hasClass("removable") && count > 3) 
+					$( this ).remove()			
+				if($(this).hasClass("removable") && count == 4) 
+					$("p").css("visibility", "hidden");
 			
 			
-		//CHECK for if row has val
-			
-			if($(this).hasClass("removable") && count > 3) 
-				$( this ).remove()			
-			if($(this).hasClass("removable") && count == 4) 
-				$("p").css("visibility", "hidden");
+				var TD = $(this).children("td:first")
+				var input = TD.children("input").val()
+					removeRowLocalStorage(input)
+			}
 		});
 		
-		
+		/* PAIR WITH ^^ FOR DELETE */
+				$(document).on('keydown','body',function(e) {
+				//console.log(e.keyCode);
+				if(e.keyCode==13)
+					keyed = true;
+
+			});
+
+			$(document).on('keyup','body',function(e) {
+				if(e.keyCode==13)
+					keyed = false;
+			});
 		
          
+		 
+		 
          var row = '<tr class="removable">' + 
 		 Row_values.Name + 
 		 Row_values.PhoneNumber + 
 		  Row_values.Address + 
-		 Row_values.JobDescription + 
 		 Row_values.TimeIn + 
 		 Row_values.Timeout + 
 		 Row_values.Hours + 
@@ -123,10 +143,44 @@ function validPhoneNumber(_this) {
 		});
 		 
 		 
-		 
-		 $(document.body).on('blur', '.TIME_OUT_TXT' ,function(){
+var myVar		 
+ $(document.body).on('blur', '.TIME_OUT_TXT' ,function(){
 			var index = $('.TIME_OUT_TXT').index($(this))
-			var timeOut = $(this).val()
+			newRow()
+			doWork(index)	
+});
+ $(document.body).on('blur', '.TIME_IN_TXT' ,function(){
+			var index = $('.TIME_IN_TXT').index($(this))
+			doWork(index)	
+});
+ $(document.body).on('blur', '.PHONE_TXT' ,function(){
+			var index = $('.PHONE_TXT').index($(this))
+			doWork(index)	
+});
+ $(document.body).on('blur', '.ADDRESS_TXT' ,function(){
+			var index = $('.ADDRESS_TXT').index($(this))
+			doWork(index)	
+});
+ $(document.body).on('blur', '.NAME_TXT' ,function(){
+			var index = $('.NAME_TXT').index($(this))
+			doWork(index)	
+});
+
+
+ $(document.body).on('keydown', 'input' ,function(){
+		clearTimeout(myVar)	 
+		 myVar = setTimeout(function() { $("#helpBTN").focus(); }, 3500);
+});
+
+
+
+
+
+
+
+
+function doWork(index) {
+			var timeOut = $('.TIME_OUT_TXT:eq(' + index +')').val()
 			var timeIn = $('.TIME_IN_TXT:eq(' + index +')').val()
 			
 			var dateOut = getDate(timeOut)
@@ -153,12 +207,19 @@ function validPhoneNumber(_this) {
 				hours++
 				min = 0
 			}
-				
 			
-			$('.HOURS_TXT:eq(' + index +')').val(hours + ":" + min)		
-		
-		});
-		 
+			var NAME = $('.NAME_TXT:eq(' + index +')').val()
+			var PHONE = $('.PHONE_TXT:eq(' + index +')').val()
+			var ADDRESS = $('.ADDRESS_TXT:eq(' + index +')').val()
+			var TIME_WORKED = hours + ":" + min
+			
+			if(NAME != "")
+				addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED)			
+				
+			$('.HOURS_TXT:eq(' + index +')').val(TIME_WORKED)
+}	
+	 
+	 
 		 
 		 
 function getDate(string) {
@@ -203,26 +264,26 @@ function makeCSV() {
 		
  
   var startOfFile = ["TIME SHEET", datetxt]; 
-  var Headers = ["NAME", "PHONE #", "Address", "JOB", "TIME IN", "TIME OUT", "HRS"];
+  var Headers = ["NAME", "PHONE #", "Address", "TIME IN", "TIME OUT", "HRS"];
   var End = ["END of Sheet"]
- 
+ var loopFor = Headers.length
 	var CSVString = prepCSVRow(startOfFile, startOfFile.length, "");
- 
-	for(var x = 0; (x < data.length / 7); x++) {
 		CSVString = prepCSVRow(Headers, Headers.length, CSVString);
-		CSVString = prepCSVRow(getValues(x), 7, CSVString);
+		
+	for(var x = 0; (x < data.length / loopFor); x++) {
+		
+		CSVString = prepCSVRow(getValues(x), loopFor, CSVString);
 	}
 	
  function getValues(y) {
-	var name = ((y * 7) )
-	var phone = ((y * 7) + 1)
-	var address = ((y * 7) + 2)
-	var job = ((y * 7) + 3)
-	var _in = ((y * 7) + 4)
-	var _out = ((y * 7) + 5)
-	var hrs = ((y * 7) + 6)
+	var name = ((y * loopFor) )
+	var phone = ((y * loopFor) + 1)
+	var address = ((y * loopFor) + 2)
+	var _in = ((y * loopFor) + 3)
+	var _out = ((y * loopFor) + 4)
+	var hrs = ((y * loopFor) + 5)
            
-	return [data[name], data[phone], data[address], data[job], data[_in], data[_out], data[hrs]]
+	return [data[name], data[phone], data[address], data[_in], data[_out], data[hrs]]
 				 
  }
  
