@@ -172,9 +172,31 @@ var myVar
 		 myVar = setTimeout(function() { $("#helpBTN").focus(); }, 3500);
 });
 
+$(document.body).on('focus', '.NAME_TXT' ,function(){
+		var index = $('.NAME_TXT').index($(this))
+			if($('.NAME_TXT:eq(' + index +')').val() == '')
+				setDefualtTime(index)
+});
 
-
-
+function setDefualtTime(index) {
+	var input = $('.TIME_IN_TXT:eq(' + index +')')
+	var d = new Date(); // for now
+	var hrs = d.getHours()
+	var min = d.getMinutes()
+	var MINS = String(min)
+	var HRS = String(hrs)
+	
+	if(MINS.length == 1)
+		min = "0" + min
+			
+	if(HRS.length == 1)
+		hrs = "0" + hrs
+	
+	var time = hrs + ":" + min
+	
+	
+	input.val(time)
+}
 
 
 
