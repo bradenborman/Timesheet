@@ -43,7 +43,7 @@
  
  .header {
 	 position: absolute;
-	 top: -40px;
+	 top: -60px;
 	 left: 10px;
  }
  
@@ -51,6 +51,7 @@
 	 border: 1px solid black;
 	 padding-bottom: 120px;
 	 border-radius: 15px;
+	 background-color: white;
  }
  
  #newRowbtn {

@@ -1,4 +1,4 @@
 ##NOTES 
 
-To delete: HOld down enter key and double click row
+CHECK FOR NAME THAT IS ALREADY ENTERED => ALERT AND SAY WILL WRITE OVER
 

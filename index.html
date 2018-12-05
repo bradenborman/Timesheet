@@ -18,6 +18,9 @@
 	  <link href='https://fonts.googleapis.com/css?family=Cormorant Unicase' rel='stylesheet'>
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	  <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
 	  <link href='style.css' rel='stylesheet'>
    </head>
    <body onload="newRow()">
@@ -41,7 +44,11 @@
    
    <div id="APP">
       	  <div class="container card">
-		  <p style="visibility: hidden;" id="warning"><b>**Input already has a value. Please do not modify unless its you**</b></p>
+		  
+		  
+
+
+		  <p style="visibility: hidden; margin-top: 5px;" id="warning"><b>**Input already has a value. Please do not modify unless its you**</b></p>
          <div class="orderFORM">
 		 <h3 class="header">Time sheet</h3>
 		
@@ -56,12 +63,13 @@
 			
                </tr>
                <tr id="HEADERS">
-                  <th width="18%">Name</th>
-				  <th width="12%">Phone Number</th>
-				  <th width="28%">Address</th> 
-                  <th width="8%">Time-In</th>
-                  <th width="8%">Time-Out</th>
-                  <th width="10%">Hrs Worked<br><center>(HH:MM)</center></th>      				       
+                  <th width="16%">Name</th>
+				  <th width="13%">Phone Number</th>
+				  <th width="20%">Address</th> 
+				  <th width="20%">Email</th>
+                  <th width="10%">Time-In</th>
+                  <th width="10%">Time-Out</th>
+                  <th width="10%"><center>Hrs Worked<br>(HH:MM)</center></th>      				       
                </tr>
             </table>	
          </div>
@@ -69,6 +77,17 @@
 	 </div>
    <script src="script.js"></script>
    <script src="storage.js"></script>
+   
+   
+   
+<datalist id="workers">
+  <option value="Braden Borman">
+  <option value="Micheal Sam">
+  <option value="Chase Daniel">
+  <option value="Sophie Cunningham">
+  <option value="Will Fuller">
+  <option value="Matt Breida">
+</datalist>
    
    </body>
 </html>

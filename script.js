@@ -1,14 +1,16 @@
 var Row_values = {
-	Name:'<td><input class="NAME_TXT" type="text" /></td>', 
+	Name:'<td><input class="NAME_TXT" type="text" list="workers" /></td>', 
 	PhoneNumber: '<td><input placeholder="With Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" type="text" /></td>',
 	Address: '<td><input class="ADDRESS_TXT" type="text" /></td>',
+	Email: '<td><input class="EMAIL_TXT" type="email" /></td>',
 	JobDescription: '<td><input style="display: none;" type="text" /><select class="size" required><option disabled selected value></option></select></td>', 
 	TimeIn: '<td><input class="TIME_IN_TXT" type="time" /></td>',
 	Timeout: '<td><input class="TIME_OUT_TXT"  required type="time" /></td> ',
 	Hours: '<td><input class="HOURS_TXT" readonly required type="text" /></td>'
 };
 	
-		 
+var TIME_TIL_SAVE = 2200	
+	
 		
 $(document).ready(function(){
    
@@ -22,7 +24,6 @@ $(document).ready(function(){
 $(".header").dblclick(function(){
     makeCSV()
 });
-
 
 
 function showHelp() {
@@ -114,13 +115,12 @@ function validPhoneNumber(_this) {
 					keyed = false;
 			});
 		
-         
-		 
 		 
          var row = '<tr class="removable">' + 
 		 Row_values.Name + 
 		 Row_values.PhoneNumber + 
-		  Row_values.Address + 
+		 Row_values.Address + 
+		 Row_values.Email +
 		 Row_values.TimeIn + 
 		 Row_values.Timeout + 
 		 Row_values.Hours + 
@@ -144,10 +144,12 @@ function validPhoneNumber(_this) {
 		 
 		 
 var myVar		 
- $(document.body).on('blur', '.TIME_OUT_TXT' ,function(){
+ $(document.body).on('keyup', '.TIME_OUT_TXT' ,function(){
 			var index = $('.TIME_OUT_TXT').index($(this))
-			newRow()
 			doWork(index)	
+});
+ $(document.body).on('blur', '.TIME_OUT_TXT' ,function(){
+			newRow()
 });
  $(document.body).on('blur', '.TIME_IN_TXT' ,function(){
 			var index = $('.TIME_IN_TXT').index($(this))
@@ -161,15 +163,22 @@ var myVar
 			var index = $('.ADDRESS_TXT').index($(this))
 			doWork(index)	
 });
+ $(document.body).on('blur', '.ADDRESS_TXT' ,function(){
+			var index = $('.ADDRESS_TXT').index($(this))
+			doWork(index)	
+});
+ $(document.body).on('blur', '.EMAIL_TXT' ,function(){
+			var index = $('.EMAIL_TXT').index($(this))
+			doWork(index)	
+});
  $(document.body).on('blur', '.NAME_TXT' ,function(){
 			var index = $('.NAME_TXT').index($(this))
 			doWork(index)	
 });
 
-
  $(document.body).on('keydown', 'input' ,function(){
 		clearTimeout(myVar)	 
-		 myVar = setTimeout(function() { $("#helpBTN").focus(); }, 3500);
+		 myVar = setTimeout(function() { $("#helpBTN").focus(); }, TIME_TIL_SAVE);
 });
 
 $(document.body).on('focus', '.NAME_TXT' ,function(){
@@ -229,14 +238,22 @@ function doWork(index) {
 				hours++
 				min = 0
 			}
+			var TIME_WORKED
 			
 			var NAME = $('.NAME_TXT:eq(' + index +')').val()
 			var PHONE = $('.PHONE_TXT:eq(' + index +')').val()
 			var ADDRESS = $('.ADDRESS_TXT:eq(' + index +')').val()
-			var TIME_WORKED = hours + ":" + min
+			if(!isNaN(hours) && !isNaN(min))
+				TIME_WORKED = hours + ":" + min
+			else 
+				TIME_WORKED = ""
+			
+			var EMAIL = $('.EMAIL_TXT:eq(' + index +')').val()
 			
 			if(NAME != "")
-				addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED)			
+				addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED, EMAIL)			
+				
+				
 				
 			$('.HOURS_TXT:eq(' + index +')').val(TIME_WORKED)
 }	
@@ -286,7 +303,7 @@ function makeCSV() {
 		
  
   var startOfFile = ["TIME SHEET", datetxt]; 
-  var Headers = ["NAME", "PHONE #", "Address", "TIME IN", "TIME OUT", "HRS"];
+  var Headers = ["NAME", "PHONE #", "Address", "EMAIL", "TIME IN", "TIME OUT", "HRS"];
   var End = ["END of Sheet"]
  var loopFor = Headers.length
 	var CSVString = prepCSVRow(startOfFile, startOfFile.length, "");
@@ -301,11 +318,12 @@ function makeCSV() {
 	var name = ((y * loopFor) )
 	var phone = ((y * loopFor) + 1)
 	var address = ((y * loopFor) + 2)
-	var _in = ((y * loopFor) + 3)
-	var _out = ((y * loopFor) + 4)
-	var hrs = ((y * loopFor) + 5)
+	var email = ((y * loopFor) + 3)
+	var _in = ((y * loopFor) + 4)
+	var _out = ((y * loopFor) + 5)
+	var hrs = ((y * loopFor) + 6)
            
-	return [data[name], data[phone], data[address], data[_in], data[_out], data[hrs]]
+	return [data[name], data[phone], data[address], data[email], data[_in], data[_out], data[hrs]]
 				 
  }
  

@@ -6,6 +6,8 @@ var oneDay = 1000 * 60 * 60 * 24;
 var day = Math.floor(diff / oneDay);
 checkDay()
 
+
+
 function checkDay() {
 	
 	if(day == localStorage.getItem("date")) {
@@ -27,8 +29,12 @@ function clearLocalStorage(){
 }
 
 //addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED)
-function addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED) {
-	var entry = { name: NAME, phone: PHONE, address: ADDRESS, timeIn: timeIn, timeOut: timeOut, timeWorked: TIME_WORKED };
+function addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED, EMAIL) {
+	
+
+	
+	var entry = { name: NAME, phone: PHONE, address: ADDRESS, timeIn: timeIn, timeOut: timeOut, timeWorked: TIME_WORKED, email: EMAIL};
+	console.log(entry)
 	localStorage.setItem(NAME, JSON.stringify(entry));
 }
 
@@ -52,6 +58,7 @@ function PopulateTables(PERSON) {
 		 '<td><input class="NAME_TXT" value="' + PERSON.name + '" type="text" /></td>' + 
 		 '<td><input placeholder="With Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" value="' + PERSON.phone + '" type="text" /></td>' + 
 		 '<td><input class="ADDRESS_TXT" value="' + PERSON.address + '" type="text" /></td>' + 
+		 '<td><input class="EMAIL_TXT" value="' + PERSON.email + '" type="email" /></td>' +
 		 '<td><input class="TIME_IN_TXT" value="' + PERSON.timeIn + '" type="time" /></td>' + 
 		 '<td><input class="TIME_OUT_TXT" value="' + PERSON.timeOut + '" required type="time" /></td> ' + 
 		 '<td><input class="HOURS_TXT" value="' + PERSON.timeWorked + '" readonly required type="text" /></td>' + 
@@ -61,11 +68,6 @@ function PopulateTables(PERSON) {
 			$('#order').append(row);
 
 }
-
-
-
-
-
 
 
 
