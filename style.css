@@ -19,6 +19,8 @@
 	
 }
  
+
+ 
  .HELP_HEADER {
 	 cursor: pointer;
 	 float: right;
@@ -34,21 +36,18 @@
  }
  
 #APP {
-	margin-top: 200px;	
+	margin-top: 115px;	
 }
 
 .orderFORM {
+	top: -65px;
 	position: relative;
 }
- 
- .header {
-	 position: absolute;
-	 top: -60px;
-	 left: 10px;
- }
+
  
  .card {
 	 border: 1px solid black;
+	 padding: 40px;
 	 padding-bottom: 120px;
 	 border-radius: 15px;
 	 background-color: white;
@@ -112,22 +111,17 @@
  }
  
  
- .page-header {
-	 font-family: 'Cormorant Unicase';
-	 font-weight: bold;
-	 font-size: 22px;
-	 background-color:  #00b3b3;
- }
- 
+
 p {
 	font-family: 'ABeeZee';font-size: 14px;
 }
  
  h1 {
 	font-size: 2em;
-	 font-weight: bold;
+	font-weight: bold;
  }
  
  h3 {
+ display: inline-block;
  font-weight: bold;
  }

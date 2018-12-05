@@ -8,9 +8,10 @@ var Row_values = {
 	Timeout: '<td><input class="TIME_OUT_TXT"  required type="time" /></td> ',
 	Hours: '<td><input class="HOURS_TXT" readonly required type="text" /></td>'
 };
+
 	
 var TIME_TIL_SAVE = 2200	
-	
+var ALL_NAMES = []	
 		
 $(document).ready(function(){
    
@@ -41,6 +42,18 @@ function closeHelp() {
 		top: '800px'
     });
 }
+
+
+function addTO_NAME_ARRAY() {
+
+		$(".NAME_TXT").each(function() {
+			if($(this).val() != "" && jQuery.inArray($(this).val(), ALL_NAMES) == -1 )
+				ALL_NAMES.push($(this).val())
+		});
+	console.log("All names entered: ")
+	console.log(ALL_NAMES)
+}
+
 	
 function validPhoneNumber(_this) {
 	var phoneEntered = _this.value
@@ -178,14 +191,25 @@ var myVar
 
  $(document.body).on('keydown', 'input' ,function(){
 		clearTimeout(myVar)	 
-		 myVar = setTimeout(function() { $("#helpBTN").focus(); }, TIME_TIL_SAVE);
+		 myVar = setTimeout(function() { $("#newROWBTN").focus(); }, TIME_TIL_SAVE);
 });
 
 $(document.body).on('focus', '.NAME_TXT' ,function(){
 		var index = $('.NAME_TXT').index($(this))
+			addTO_NAME_ARRAY()
 			if($('.NAME_TXT:eq(' + index +')').val() == '')
 				setDefualtTime(index)
 });
+
+
+ $(document.body).on('keyup', '.NAME_TXT' ,function(){
+				var index = $('.NAME_TXT').index($(this))
+			var txtEntered = $(this).val()
+			if(jQuery.inArray(txtEntered, ALL_NAMES) !== -1) {
+				$(this).val("_" + txtEntered)
+			}
+			
+		});
 
 function setDefualtTime(index) {
 	var input = $('.TIME_IN_TXT:eq(' + index +')')
@@ -252,9 +276,7 @@ function doWork(index) {
 			
 			if(NAME != "")
 				addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED, EMAIL)			
-				
-				
-				
+					
 			$('.HOURS_TXT:eq(' + index +')').val(TIME_WORKED)
 }	
 	 

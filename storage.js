@@ -30,11 +30,7 @@ function clearLocalStorage(){
 
 //addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED)
 function addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED, EMAIL) {
-	
-
-	
 	var entry = { name: NAME, phone: PHONE, address: ADDRESS, timeIn: timeIn, timeOut: timeOut, timeWorked: TIME_WORKED, email: EMAIL};
-	console.log(entry)
 	localStorage.setItem(NAME, JSON.stringify(entry));
 }
 
