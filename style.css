@@ -5,27 +5,54 @@
 	 }
  
 #HELP {
-	background-color: black;
-	color: white;
+	background-color: #f8f7f7;
 	transition: all .7s;
 	position: absolute;
-	top: 800px;
+	top: 1500px;
 	left: -300px;
-	min-height: 250px;
+	min-height: 400px;
+	font-size: 1.6em;
 	width: 50px;
 	z-index: 99;
-	border: 3px solid black;
+	border: 1px solid black;
 	border-radius: 12px;
 	
 }
  
-
+input::placeholder {
+	font-size: .7em;
+}
  
- .HELP_HEADER {
+ .HELP_RIGHT {
 	 cursor: pointer;
 	 float: right;
-	 margin-right: 20px;
+	 margin-top: 15px;
+	 
  }
+  
+  
+ #HELP_BACKGROUND {
+	width: 0%;
+	height: 0vh;
+	background-color: #edeeec;
+	position: absolute;
+	top: 10vh;
+	left: 10%;
+	display: none;
+	transition: all 1s;
+	border: 2px solid black;
+ } 
+  
+  #HELP_BACKGROUND #EXAMPLE {
+	  
+	text-align: center;
+	position: relative;
+	top: 600px;
+	font-weight: bold;
+	font-family: 'Amaranth';
+	font-size: 22px;
+ }
+
   
 .para {
 	margin: 20px;

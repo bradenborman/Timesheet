@@ -1,6 +1,6 @@
 var Row_values = {
 	Name:'<td><input class="NAME_TXT" type="text" list="workers" /></td>', 
-	PhoneNumber: '<td><input placeholder="With Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" type="text" /></td>',
+	PhoneNumber: '<td><input placeholder="with Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" type="text" /></td>',
 	Address: '<td><input class="ADDRESS_TXT" type="text" /></td>',
 	Email: '<td><input class="EMAIL_TXT" type="email" /></td>',
 	JobDescription: '<td><input style="display: none;" type="text" /><select class="size" required><option disabled selected value></option></select></td>', 
@@ -18,8 +18,7 @@ $(document).ready(function(){
    var d = new Date();
    var date = d.toLocaleDateString('en-US');
    document.getElementById("datetxt").value = date
-   
-   
+      
 });
 
 $(".header").dblclick(function(){
@@ -28,19 +27,38 @@ $(".header").dblclick(function(){
 
 
 function showHelp() {
+
 	$("#HELP").animate({
-        left: '33%',
-		width: '33%',
-		top: '20vh'
+        left: '25%',
+		width: '50%',
+		top: '18vh',
     });
+		$("#HELP_BACKGROUND").show();
+		
+	$("#HELP_BACKGROUND").animate({
+        borderRadius: '100px',
+		width: '80%',
+		height: '70vh'
+    }, 100);
+		
 }
+
 
 function closeHelp() {
 	$("#HELP").animate({
         left: '-300px',
 		width: '50',
-		top: '800px'
+		top: '1500px'
     });
+
+	$("#HELP_BACKGROUND").animate({
+		width: '0%',
+		height: '0vh'
+    }, 20);
+	
+	$("#HELP_BACKGROUND").hide(220);
+
+	
 }
 
 
