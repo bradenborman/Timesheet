@@ -31,16 +31,16 @@ function showHelp() {
 	$("#HELP").animate({
         left: '25%',
 		width: '50%',
-		top: '18vh',
+		top: '18%',
     });
 		$("#HELP_BACKGROUND").show();
 		
 	$("#HELP_BACKGROUND").animate({
         borderRadius: '100px',
 		width: '80%',
-		height: '70vh'
+		height: '70%'
     }, 100);
-		
+	
 }
 
 
@@ -53,12 +53,11 @@ function closeHelp() {
 
 	$("#HELP_BACKGROUND").animate({
 		width: '0%',
-		height: '0vh'
+		height: '0%'
     }, 20);
 	
 	$("#HELP_BACKGROUND").hide(220);
 
-	
 }
 
 
@@ -68,10 +67,7 @@ function addTO_NAME_ARRAY() {
 			if($(this).val() != "" && jQuery.inArray($(this).val(), ALL_NAMES) == -1 )
 				ALL_NAMES.push($(this).val())
 		});
-	console.log("All names entered: ")
-	console.log(ALL_NAMES)
 }
-
 	
 function validPhoneNumber(_this) {
 	var phoneEntered = _this.value
@@ -167,6 +163,10 @@ function validPhoneNumber(_this) {
 		});
 		 
 		 $(document.body).on('focus', 'input' ,function(){
+			 
+			 var row = $(this)
+			 row.parents("tr").css({"backgroundColor": "white"});
+			 
 			if($(this).val() != "")
 				$('#warning').css("visibility", "visible");
 			else 
@@ -209,7 +209,13 @@ var myVar
 
  $(document.body).on('keydown', 'input' ,function(){
 		clearTimeout(myVar)	 
-		 myVar = setTimeout(function() { $("#newROWBTN").focus(); }, TIME_TIL_SAVE);
+		//$(this).parents("tr").css({"backgroundColor": "#d7fad1"});
+		
+		var row = $(this)
+		myVar = setTimeout(function() { 
+			row.parents("tr").css({"backgroundColor": "#ebfce8"});
+			$("#newROWBTN").focus(); 
+		}, TIME_TIL_SAVE);
 });
 
 $(document.body).on('focus', '.NAME_TXT' ,function(){

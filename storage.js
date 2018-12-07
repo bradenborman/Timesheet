@@ -50,7 +50,7 @@ function removeRowLocalStorage(key_value) {
 
 function PopulateTables(PERSON) {
 	
-	var row = '<tr class="removable">' + 
+	var row = '<tr style="background-color: #ebfce8;" class="removable">' + 
 		 '<td><input class="NAME_TXT" value="' + PERSON.name + '" type="text" /></td>' + 
 		 '<td><input placeholder="With Areacode" class="PHONE_TXT" onblur="validPhoneNumber(this)" value="' + PERSON.phone + '" type="text" /></td>' + 
 		 '<td><input class="ADDRESS_TXT" value="' + PERSON.address + '" type="text" /></td>' + 
