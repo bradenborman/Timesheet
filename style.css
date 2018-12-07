@@ -1,5 +1,5 @@
  body, html {
-	 height: 100%;
+	 height: 100%;	 
  }
  
  body {
@@ -35,6 +35,11 @@ input::placeholder {
 	 
  }
   
+  
+  #HELP li {
+	  font-weight: bold;
+	  margin-bottom: 10px;
+  }
   
  #HELP_BACKGROUND {
 	width: 0%;

@@ -51,7 +51,7 @@ function closeHelp() {
 		width: '50',
 		top: '1500px'
     });
-
+	
 	$("#HELP_BACKGROUND").animate({
 		width: '1%',
 		height: '1%',
