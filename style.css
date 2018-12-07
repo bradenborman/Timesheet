@@ -43,20 +43,18 @@ input::placeholder {
 	background-image:url('https://coolbackgrounds.io/images/backgrounds/sea-edge-311c5cd5.png');
     background-repeat:no-repeat;
     background-size:cover;
-	
 	position: absolute;
-	top: 10%;
-	left: 10%;
+	top: 50%;
+	left: 50%;
 	display: none;
 	transition: all 1s;
-	border: 2px solid black;
  } 
   
   #HELP_BACKGROUND #EXAMPLE {
 	  
 	text-align: center;
 	position: relative;
-	top: 600px;
+	top: 80%;
 	font-weight: bold;
 	font-family: 'Amaranth';
 	font-size: 22px;

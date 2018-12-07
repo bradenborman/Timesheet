@@ -36,7 +36,9 @@ function addToStorage(NAME, PHONE, ADDRESS, timeIn, timeOut, TIME_WORKED, EMAIL)
 
 
 for (var i = 0; i < localStorage.length; i++){
-    if(localStorage.key(i) != "date"){
+    if(localStorage.key(i) == "date" || localStorage.key(i) == "TIME EDITS" ){
+
+	} else {
 		var Person = JSON.parse(localStorage.getItem(localStorage.key(i)));
 		PopulateTables(Person)
 	}

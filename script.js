@@ -36,9 +36,10 @@ function showHelp() {
 		$("#HELP_BACKGROUND").show();
 		
 	$("#HELP_BACKGROUND").animate({
-        borderRadius: '100px',
-		width: '80%',
-		height: '70%'
+		width: '100%',
+		height: '100%',
+		top: '0',
+		left: '0'
     }, 100);
 	
 }
@@ -52,8 +53,10 @@ function closeHelp() {
     });
 
 	$("#HELP_BACKGROUND").animate({
-		width: '0%',
-		height: '0%'
+		width: '1%',
+		height: '1%',
+		top: '50%',
+		left: '50%'
     }, 20);
 	
 	$("#HELP_BACKGROUND").hide(220);
@@ -326,10 +329,12 @@ function getDate(string) {
  
 function makeCSV() {
  
+ var Time_Report = BuildReport()
+ 
+ 
  var d = new Date();
  var datetxt = document.getElementById("datetxt").value 
-
-  
+ 
   var titles = [];
   var data = [];
   
@@ -359,6 +364,9 @@ function makeCSV() {
 		
 		CSVString = prepCSVRow(getValues(x), loopFor, CSVString);
 	}
+	
+	CSVString += "\r\n" + Time_Report
+	
 	
  function getValues(y) {
 	var name = ((y * loopFor) )
