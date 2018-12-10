@@ -59,7 +59,7 @@ input::placeholder {
 	  
 	text-align: center;
 	position: relative;
-	top: 80%;
+	top: 60%;
 	font-weight: bold;
 	font-family: 'Amaranth';
 	font-size: 22px;
@@ -149,8 +149,17 @@ input::placeholder {
 	color: green;
  }
  
+ .fa-check-circle {
+	 cursor:  pointer;
+		text-align: center;
+		margin-left: 10px;
+ }
  
-
+ .fa-check-circle:hover {
+	 color: green;
+ }
+ 
+ 
 p {
 	font-family: 'ABeeZee';font-size: 14px;
 }

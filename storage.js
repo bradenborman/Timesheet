@@ -51,6 +51,14 @@ function removeRowLocalStorage(key_value) {
 
 
 function PopulateTables(PERSON) {
+	var OUT
+	
+	if(PERSON.timeOut == "")
+		OUT = '<div class="OUT_BLOCK"><td><i class="fa fa-check-circle"></i><input style="display: none;" class="TIME_OUT_TXT"  required type="time" readonly /></div></td> '
+	else 
+		OUT = '<div class="OUT_BLOCK"><td><i style="display: none;" class="fa fa-check-circle"></i><input class="TIME_OUT_TXT" value="' + PERSON.timeOut + '"  required type="time" readonly /></div></td> '
+		 
+	
 	
 	var row = '<tr style="background-color: #ebfce8;" class="removable">' + 
 		 '<td><input class="NAME_TXT" value="' + PERSON.name + '" type="text" /></td>' + 
@@ -58,7 +66,7 @@ function PopulateTables(PERSON) {
 		 '<td><input class="ADDRESS_TXT" value="' + PERSON.address + '" type="text" /></td>' + 
 		 '<td><input class="EMAIL_TXT" value="' + PERSON.email + '" type="email" /></td>' +
 		 '<td><input class="TIME_IN_TXT" value="' + PERSON.timeIn + '" type="time" /></td>' + 
-		 '<td><input class="TIME_OUT_TXT" value="' + PERSON.timeOut + '" required type="time" /></td> ' + 
+		 OUT + 
 		 '<td><input class="HOURS_TXT" value="' + PERSON.timeWorked + '" readonly required type="text" /></td>' + 
 		 '</tr>'
 		 

@@ -4,13 +4,13 @@ var Row_values = {
 	Address: '<td><input class="ADDRESS_TXT" type="text" /></td>',
 	Email: '<td><input class="EMAIL_TXT" type="email" /></td>',
 	JobDescription: '<td><input style="display: none;" type="text" /><select class="size" required><option disabled selected value></option></select></td>', 
-	TimeIn: '<td><input class="TIME_IN_TXT" type="time" /></td>',
-	Timeout: '<td><input class="TIME_OUT_TXT"  required type="time" /></td> ',
+	TimeIn: '<td><input class="TIME_IN_TXT" type="time" readonly /></td>',
+	Timeout: '<div class="OUT_BLOCK"><td><i class="fa fa-check-circle"></i><input style="display: none;" class="TIME_OUT_TXT"  required type="time" readonly /></div></td> ',
 	Hours: '<td><input class="HOURS_TXT" readonly required type="text" /></td>'
 };
 
 	
-var TIME_TIL_SAVE = 2200	
+var TIME_TIL_SAVE = 4200	
 var ALL_NAMES = []	
 		
 $(document).ready(function(){
@@ -19,6 +19,9 @@ $(document).ready(function(){
    var date = d.toLocaleDateString('en-US');
    document.getElementById("datetxt").value = date
       
+	$('.TIME_IN_TXT').prop('readonly', true); 
+$('.TIME_OUT_TXT').prop('readonly', true);  	
+	  
 });
 
 $(".header").dblclick(function(){
@@ -238,6 +241,28 @@ $(document.body).on('focus', '.NAME_TXT' ,function(){
 			
 		});
 
+	
+
+	
+	
+	//CLOCKING OUT
+$(document.body).on('click', '.fa-check-circle' ,function(){
+		var index = $('.fa-check-circle').index($(this))
+			$(this).css({"display": "none"});
+			var time_input = $('.TIME_OUT_TXT:eq(' + index +')')
+			time_input.css({"display": "block"});
+			
+			setDefualtOUTTIME(index)
+});		
+	
+		
+		
+		
+		
+		
+		
+		
+		
 function setDefualtTime(index) {
 	var input = $('.TIME_IN_TXT:eq(' + index +')')
 	var d = new Date(); // for now
@@ -258,6 +283,26 @@ function setDefualtTime(index) {
 	input.val(time)
 }
 
+
+function setDefualtOUTTIME(index) {
+	var input = $('.TIME_OUT_TXT:eq(' + index +')')
+	var d = new Date(); // for now
+	var hrs = d.getHours()
+	var min = d.getMinutes()
+	var MINS = String(min)
+	var HRS = String(hrs)
+	
+	if(MINS.length == 1)
+		min = "0" + min
+			
+	if(HRS.length == 1)
+		hrs = "0" + hrs
+	
+	var time = hrs + ":" + min
+
+	input.val(time)
+	doWork(index)
+}
 
 
 
@@ -329,7 +374,7 @@ function getDate(string) {
  
 function makeCSV() {
  
- var Time_Report = BuildReport()
+ //var Time_Report = BuildReport()
  
  
  var d = new Date();
@@ -365,7 +410,7 @@ function makeCSV() {
 		CSVString = prepCSVRow(getValues(x), loopFor, CSVString);
 	}
 	
-	CSVString += "\r\n" + Time_Report
+	//CSVString += "\r\n" + Time_Report
 	
 	
  function getValues(y) {
