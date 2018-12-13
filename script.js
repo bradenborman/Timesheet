@@ -5,15 +5,23 @@ var Row_values = {
 	Email: '<td><input class="EMAIL_TXT" type="email" /></td>',
 	JobDescription: '<td><input style="display: none;" type="text" /><select class="size" required><option disabled selected value></option></select></td>', 
 	TimeIn: '<td><input class="TIME_IN_TXT" type="time" readonly /></td>',
-	Timeout: '<div class="OUT_BLOCK"><td><i class="fa fa-check-circle"></i><input style="display: none;" class="TIME_OUT_TXT"  required type="time" readonly /></div></td> ',
+	Timeout: '<div class="OUT_BLOCK"><td><i style="display: none;" class="fa fa-check-circle"></i><input style="display: none;" class="TIME_OUT_TXT"  required type="time" readonly /></div></td> ',
 	Hours: '<td><input class="HOURS_TXT" readonly required type="text" /></td>'
 };
 
 	
 var TIME_TIL_SAVE = 4200	
+var ROWS_TO_START = 15
 var ALL_NAMES = []	
-		
+	
 $(document).ready(function(){
+   
+   newRow()
+   
+   for(var count = 0; count < ROWS_TO_START; count++)
+   {
+	   newRow()
+   }
    
    var d = new Date();
    var date = d.toLocaleDateString('en-US');
@@ -84,8 +92,11 @@ function validPhoneNumber(_this) {
 			_this.value = '(' + match[1] + ') ' + match[2] + '-' + match[3]
 		  }
 		  else {
-			  _this.value = ""
+			  _this.value = phoneEntered
 		  }
+		  
+		  
+		  
 }
 
 
@@ -109,6 +120,7 @@ function validPhoneNumber(_this) {
          		
          }
             
+			
          function newRow() {			
 				$('#order').append(row);
 				populateDD()
@@ -209,7 +221,13 @@ var myVar
 			doWork(index)	
 });
  $(document.body).on('blur', '.NAME_TXT' ,function(){
-			var index = $('.NAME_TXT').index($(this))
+	 var index = $('.NAME_TXT').index($(this))
+			
+		
+		if($('.TIME_OUT_TXT:eq(' + index +')').val() == '')//SHOW TIME OUT HERE check to see if out already has value -- dont show if so
+			$('.fa-check-circle:eq(' + index +')').css("display", "inline-block");
+	 
+			
 			doWork(index)	
 });
 

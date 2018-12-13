@@ -19,7 +19,7 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
       <link href='style.css' rel='stylesheet'>
    </head>
-   <body onload="newRow()">
+   <body>
       <div id="HELP">
          <div class="row">
             <div class="col-sm-8 para">
@@ -40,10 +40,13 @@
          <div class="container card">
             <p style="visibility: hidden; margin-top: 5px;" id="warning"><b>**Input already has a value. Please do not modify unless its you**</b></p>
             <div class="orderFORM">
-               <h3 class="header"><i class="far fa-clock"></i> Time sheet</h3><p>Please Sign in with name. You may fill other fields later</p>
-               <div style="text-align: right;" id="newRowbtn">
+               <h3 class="header"><i class="far fa-clock"></i> Time sheet</h3>
+			   <p>Please Sign-in with name. You may fill other fields later
+			   <br />Click the check mark to Clock-Out
+			   <br />Please note on paper below any errors or changes to be made</p>
+			   <div style="text-align: right;" id="newRowbtn">
                   <button id="newROWBTN" onclick="newRow()" class="btn btn-primary">New Row</button>
-                  <button id="helpBTN" onclick="showHelp()"  class="btn btn-primary">Show Help</button>
+                <!--  <button id="helpBTN" onclick="showHelp()"  class="btn btn-primary">Show Help</button> -->
                </div>
                <table id="order" cellpadding="0"; cellspacing="0">
                   <tr>
